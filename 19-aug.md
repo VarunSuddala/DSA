@@ -26,7 +26,7 @@ print(max_sum)
 ```
 ## 1399C. Boats Competition
 
-```
+```python
 m=int(input())
 
 for i in range(m):
