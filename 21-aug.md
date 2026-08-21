@@ -35,5 +35,35 @@ Output
 # code
 ```python
 ```
+---
+*`SQL JOIN Practice`*:
+---
+```sql
+1
+select e.emp_id, e.emp_name, d.dept_name, d.location from employees e inner join departments d on e.dept_id = d.dept_id;
+2
+select e.emp_id, e.emp_name, d.dept_name from employees e left join departments d on e.dept_id = d.dept_id;
+3
+select d.dept_id, d.dept_name from departments d left join employees e on d.dept_id = e.dept_id where e.emp_id is null;
+4
+select e.emp_name, p.project_name, d.dept_name, ep.hours from employees e
+inner join employee_project ep on e.emp_id = ep.emp_id
+inner join projects p on ep.project_id = p.project_id
+inner join departments d on p.dept_id = d.dept_id;
+5
+select p.project_id, p.project_name, e.emp_name from projects p left join employee_project ep
+on p.project_id = ep.project_id left join employees e
+on ep.emp_id = e.emp_id;
+6
+select e.emp_name as employee_name, m.emp_name as manager_name from employees e left join employees m
+on e.manager_id = m.emp_id;
+7
+select e.emp_id, e.emp_name, count(ep.project_id) as total_projects from employees e
+inner join employee_project ep on e.emp_id = ep.emp_id
+group by e.emp_id, e.emp_name having count(ep.project_id) > 1;
+8
+select d.dept_name, count(e.emp_id) as employee_count, avg(e.salary) as average_salary
+from departments d left join employees e on d.dept_id = e.dept_id
+group by d.dept_id, d.dept_name;
+```
 
-  
