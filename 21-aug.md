@@ -34,22 +34,18 @@ Output
   format Print minimum energy.
 # code
 ```python
-n=int(input())
+n,k=map(int,input().split())
 heights = list(map(int,input().split()))
-k=int(input())
 dp=[0]*(n)
-
-dp[0]=heights[0]
+dp[0]=0
 dp[1]= abs(heights[0]-heights[1])
-
 for i in range (2,n):
     dis=float("inf")
-    for j in range(1,k):
-        if i-j>0:
+    for j in range(1,k+1):
+        if i-j>=0:
             one = dp[i-j] + abs(heights[i] - heights[i-j])
             dis=min(dis,one)
     dp[i]=dis
-    
 print(dp[n-1])
 ```
 ---
